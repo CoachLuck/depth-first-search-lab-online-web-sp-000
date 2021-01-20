@@ -18,8 +18,8 @@ let vertices = [
 ]
 
 function depthFirstSearch(rootNode, vert, edges) {
-  let stack = []
   let found = [rootNode]
+  let stack = []
   stack.push(rootNode)
   while (stack.length > 0) {
     let node = stack.pop()
