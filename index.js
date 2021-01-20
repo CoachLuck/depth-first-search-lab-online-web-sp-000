@@ -19,25 +19,18 @@ let vertices = [
 
 function depthFirstSearch(rootNode, vert, edges) {
   let stack = []
-  let found = []
+  let found = [rootNode]
   stack.push(rootNode)
   while (stack.length > 0) {
-    console.log("Current Stack: \n", stack, "\n")
     let node = stack.pop()
-    console.log("Node: ", node.name)
-    let adj = findAdjacent(node.name, vert, edges)
     if (node.discovered == null) {
-      node.discovered = true;
-      console.log("Adding ", adj, "to the stack")
-      console.log("New Stack: \n", )
-      stack.push(e => stack.concat(adj))
-
+        node.discovered = true;
+        findAdjacent(node.name, vert, edges).forEach(node => {
+            found.push(node)
+            stack.push(node)
+        })
     }
-
-    console.log("Adding Node: ", node.name)
-    found.push(node)
   }
-
   return found;
 }
 
